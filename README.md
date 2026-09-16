@@ -15,8 +15,8 @@ npm run build
 ## Scope and limitations
 
 - Local browser draft persistence; photo preview is memory-only and never uploaded.
-- Retail estimates use an illustrative $35/sq. ft. base rate, not approved selling prices. Upgrades, freight, taxes and factory rounding are excluded.
+- Retail estimates use $25.77/sq. ft. and $30.77 per panel for InvisibleTilt. Selected InvisibleTilt is included in the total; freight, taxes and factory rounding are excluded. Only currently selectable configurations are priced. New paid options must receive a public selling price before being enabled.
 - Frame allowances are pricing formulas, not approved manufacturing dimensions. All factory deductions, panel limits, clearances and support require final validation.
 - More than 1/4-inch spread in widths, heights, or diagonals flags review.
 - No supplier documents, dealer cost schedules, credentials, or live customer data in this repository.
-- Production blockers: approved brand/retail pricing, shipping/tax policy, measuring validation, saved multi-window projects, secure uploads, order review workflow and payment integration.
+- Production blockers: approved brand, shipping/tax policy, measuring validation, saved multi-window projects, secure uploads, order review workflow and payment integration.
