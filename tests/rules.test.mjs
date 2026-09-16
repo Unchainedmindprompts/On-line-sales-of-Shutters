@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {assess} from '../lib/rules.mjs';
+const base={widthTop:'36',widthMiddle:'36',widthBottom:'36',heightLeft:'60',heightCenter:'60',heightRight:'60',diagonalOne:'70',diagonalTwo:'70',frame:'z',panels:'2',depth:'3',obstructions:'no',tiltIn:'no',sill:'no'};
+test('quarter-inch boundary and mount measurement selection',()=>{let w={...base,widthTop:'36.25'};assert.equal(assess(w).width,36);assert.ok(!assess(w).flags.some(f=>f.startsWith('Width varies')));w.widthTop='36.375';assert.ok(assess(w).flags.some(f=>f.startsWith('Width varies')));assert.equal(assess({...w,frame:'l'}).width,36.375)});
+test('eight sq ft minimum and Z frame allowance',()=>{assert.equal(assess(base).area,38*62/144);assert.equal(assess({...base,widthTop:'12',widthMiddle:'12',widthBottom:'12',heightLeft:'12',heightCenter:'12',heightRight:'12'}).area,8)});
+test('missing or malformed dimensions cannot be quoted',()=>{for(const v of ['', 'abc','-1','Infinity'])assert.equal(assess({...base,widthTop:v}).valid,false)});
+test('diagonal and exact rail triggers survive',()=>{const r=assess({...base,diagonalTwo:'70.375',rail:'exact'});assert.ok(r.flags.some(f=>f.startsWith('Diagonals')));assert.ok(r.flags.some(f=>f.startsWith('Exact divider')))});
